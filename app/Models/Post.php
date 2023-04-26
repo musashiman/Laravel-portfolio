@@ -13,15 +13,28 @@ class Post extends Model
     
     protected $fillable = [
         "title",
+        "category_id",
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
+    // 取得数制限をかける方法；
     public function getByLimit(int $limit_count = 10)
     {
         return $this->orderBy("updated_at","DESC")->limit($limit_count)->get();
     }
     
+    // ページネーションと取得する制限をかける方法；
     public function getPaginateByLimit(int $limit_count = 10)
     {
         return $this->orderBy("updated_at","DESC")->paginate($limit_count);
     }
+    // リレーション・ページネーション・取得数制限をかける方法；
+    public function getRelationPaginateByLimit(int $limit_count = 5)
+    {
+        return $this::with("category")->orderBy("updated_at","DESC")->paginate($limit_count);
+    }
+    
 }
