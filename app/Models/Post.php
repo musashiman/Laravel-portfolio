@@ -13,6 +13,7 @@ class Post extends Model
     
     protected $fillable = [
         "title",
+        "image_url"
     ];
     
     public function getByLimit(int $limit_count = 10)

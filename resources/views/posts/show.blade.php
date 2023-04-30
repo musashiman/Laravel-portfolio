@@ -15,6 +15,7 @@
     <body class="antialiased">
         <h1 class="page-title">Post Show</h1>
         <div class="content_post">
+            <img src="{{$post->image_url}}" alt="画像が読み込めませんわい。"/>
             <h2 class="title"><a href="/posts/{{$post->id}}/edit">{{$post->title}}</a></h2>
             <p class="makeday">作成日時:{{$post->created_at}}</p>
         </div>
