@@ -13,7 +13,7 @@ class Post extends Model
     
     protected $fillable = [
         "title",
-        "category_id",
+        "image_url"
     ];
     public function category()
     {
@@ -31,10 +31,4 @@ class Post extends Model
     {
         return $this->orderBy("updated_at","DESC")->paginate($limit_count);
     }
-    // リレーション・ページネーション・取得数制限をかける方法；
-    public function getRelationPaginateByLimit(int $limit_count = 5)
-    {
-        return $this::with("category")->orderBy("updated_at","DESC")->paginate($limit_count);
-    }
-    
 }

@@ -14,11 +14,16 @@
     </head>
     <body class="antialiased">
         <h1 class="page-title">Post Create</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="title">
                 <h2>Title</h2>
-                <input type="text" name="post[title]" placeholder="タイトル"/>
+                <input type="text" name="post[title]" placeholder="タイトル" value="{{old("post.title")}}"/>
+                <p class="title_error" style="color:red">{{$errors->first("post.title")}}</p>
+            </div>
+            <div class="image">
+                <input type="file" name="image">
+                <p class="image_error" style="color:red">{{$errors->first("image")}}</p>
             </div>
             <input type="submit" value="store"/>
         </form>

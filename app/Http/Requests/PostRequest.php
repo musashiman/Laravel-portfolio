@@ -21,6 +21,7 @@ class PostRequest extends FormRequest
         return [
             //
             "post.title" => "required|string|max:100",
+            "image" => "required|file",
         ];
     }
 }

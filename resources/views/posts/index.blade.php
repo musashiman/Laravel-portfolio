@@ -13,6 +13,7 @@
        
     </head>
     <body class="antialiased">
+        <h1 class="page_title">Index</h1>
         <h2><a href="/posts/create">create</a></h2>
        <div class="posts">
            @foreach($posts as $post)
