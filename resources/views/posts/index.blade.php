@@ -21,6 +21,7 @@
             <h2><a href="/posts/create">create</a></h2>
            <div class="posts">
                @foreach($posts as $post)
+               @if(Auth::user()->id ==$post->user_id )
                <div class="post">
                     <h2 class="title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
                     <p class="date">{{$post->created_at}}</p>
@@ -31,6 +32,7 @@
                    @method("DELETE")
                    <button type="button" onclick="deletePost({{$post->id}})">削除</button>
                </form>
+               @endif
                @endforeach
            </div>
            
