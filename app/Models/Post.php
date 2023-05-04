@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\User;
 
 class Post extends Model
 {
@@ -13,12 +14,14 @@ class Post extends Model
     
     protected $fillable = [
         "title",
-        "image_url"
+        "image_url",
+        "user_id",
     ];
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+   
+   public function category()
+   {
+       return $this->belongsTo(User::class);
+   }
     
     // 取得数制限をかける方法；
     public function getByLimit(int $limit_count = 10)
