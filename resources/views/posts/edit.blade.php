@@ -13,18 +13,23 @@
        
     </head>
     <body class="antialiased">
-        <h1 class="page-title">Post Edit</h1>
-        <form action="/posts/{{$post->id}}" method="POST">
-        @csrf
-        @method("PUT")
-            <div class="title">
-                <h2>Title</h2>
-                <input type="text" name="post[title]" placeholder="タイトル" value="{{$post->title}}"/>
+        <x-app-layout>
+        <x-slot name="header">
+            Edit
+        </x-slot>
+            <h1 class="page-title">Post Edit</h1>
+            <form action="/posts/{{$post->id}}" method="POST">
+            @csrf
+            @method("PUT")
+                <div class="title">
+                    <h2>Title</h2>
+                    <input type="text" name="post[title]" placeholder="タイトル" value="{{$post->title}}"/>
+                </div>
+                <input type="submit" value="store"/>
+            </form>
+            <div class="footer">
+                <a href="/">戻る</a>
             </div>
-            <input type="submit" value="store"/>
-        </form>
-        <div class="footer">
-            <a href="/">戻る</a>
-        </div>
+        </x-app-layout>
     </body>
 </html>
