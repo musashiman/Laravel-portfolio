@@ -17,14 +17,20 @@
         <x-slot name="header">
             Index
         </x-slot>
-            <h1 class="page_title">Index</h1>
-            <h2><a href="/posts/create">create</a></h2>
-           <div class="posts">
+        <!--ここから編集を再開する。cssの適応を終えた後、リレーションを完成させる。-->
+            <div class="md:flex justify-start md:space-x-16 pr-8">
+                <h1 class="page_title">Index</h1>
+                <h1 class="title"><a href="/follows">Follow</a></h1>
+                <h1><a href="/posts/create">create</a></h1>
+            </div>
+                
+               <div class="posts">
                @foreach($posts as $post)
                @if(Auth::user()->id ==$post->user_id )
                <div class="post">
-                    <h2 class="title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
+                    <h1 class="title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
                     <p class="date">{{$post->created_at}}</p>
+                    <p class="user_id">ログインユーザーID：{{$post->user_id}}</p>
                </div>
                
                <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
@@ -41,6 +47,8 @@
            <div class="paginate">
                {{ $posts->links()}}
            </div>
+           
+           
            
            <script>
             function deletePost(id)
