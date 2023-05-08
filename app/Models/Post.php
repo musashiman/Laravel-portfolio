@@ -18,7 +18,7 @@ class Post extends Model
         "user_id",
     ];
    
-   public function category()
+   public function users()
    {
        return $this->belongsTo(User::class);
    }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,17 @@ use App\Http\Controllers\PostController;
 */
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
-Route::get('/', 'index')->name('index');
-Route::post('/posts', 'store')->name('store');
-Route::get('/posts/create', 'create')->name('create');
-Route::get('/posts/{post}', 'show')->name('show');
-Route::put('/posts/{post}', 'update')->name('update');
-Route::delete('/posts/{post}', 'delete')->name('delete');
-Route::get('/posts/{post}/edit', 'edit')->name('edit');
+    Route::get('/', 'index')->name('index');
+    Route::post('/posts', 'store')->name('store');
+    Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts/{post}', 'show')->name('show');
+    Route::put('/posts/{post}', 'update')->name('update');
+    Route::delete('/posts/{post}', 'delete')->name('delete');
+    Route::get('/posts/{post}/edit', 'edit')->name('edit');
+});
+
+Route::controller(FollowController::class)->middleware(["auth"])->group(function(){
+    Route::get("/follows","follow_index")->name("follow_index");
 });
 
 Route::get('/dashboard', function () {
