@@ -17,28 +17,27 @@
         <x-slot name="header">
             Index
         </x-slot>
-        <!--ここから編集を再開する。cssの適応を終えた後、リレーションを完成させる。-->
-            <div class="md:flex justify-start md:space-x-16 pr-8">
-                <h1 class="page_title">Index</h1>
-                <h1 class="title"><a href="/follows">Follow</a></h1>
-                <h1><a href="/posts/create">create</a></h1>
+            <div class="flex justify-start space-x-16 pr-8">
+                <div class="title">Index</div>
+                <div class="title"><a href="/follows">Follow</a></div>
+                <div class="title"><a href="/posts/create">create</a></div>
             </div>
                 
                <div class="posts">
                @foreach($posts as $post)
-               @if(Auth::user()->id ==$post->user_id )
-               <div class="post">
-                    <h1 class="title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
-                    <p class="date">{{$post->created_at}}</p>
-                    <p class="user_id">ログインユーザーID：{{$post->user_id}}</p>
-               </div>
-               
-               <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
-                   @csrf
-                   @method("DELETE")
-                   <button type="button" onclick="deletePost({{$post->id}})">削除</button>
-               </form>
-               @endif
+                   @if(Auth::user()->id ==$post->user_id )
+                   <div class="post">
+                        <h1 class="title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
+                        <p class="date">{{$post->created_at}}</p>
+                        <p class="user_id">ログインユーザーID：{{$post->user_id}}</p>
+                   </div>
+                   
+                   <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
+                       @csrf
+                       @method("DELETE")
+                       <button type="button" onclick="deletePost({{$post->id}})">削除</button>
+                   </form>
+                   @endif
                @endforeach
            </div>
            
