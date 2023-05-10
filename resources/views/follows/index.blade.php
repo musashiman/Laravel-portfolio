@@ -18,16 +18,21 @@
             Follow
         </x-slot>
         <h2 class="title">
-            Follow
+            Followers
         </h2>
+        <h2 class="create"><a href="/follows/create">フォロワーを作る。</a></h2>
         <div class="users">
             @foreach($users as $user)
-                @if($user->id != Auth::user()->id)
-                    <h2>フォローできるユーザー</h2>
-                    <p>{{$user->name}}</p>
+                @if(Auth::user()->id != $user->id)
+                    <p class="letters">名前：{{$user->name}}</p>
+                    
+                    <p class="letters">ID：{{$user->id}}</p>
+                    
+                    <p class="letters">Email：{{$user->email}}</p>
                 @endif
             @endforeach
         </div>
+        
         </x-app-layout>
     </body>
 </html>
