@@ -20,23 +20,36 @@
         <h2 class="title">
             Create
         </h2>
-        
-        <form action="/follows" method="POST">
-            <div class="create_follower">
-                @foreach($users as $user)
-                    @if(Auth::user()->id != $user->id)
+        <div >
+            @foreach($users as $user)
+                @if(Auth::user()->id != $user->id)
+                    
+                    <div class="create_follower">
+                        <form action="/follows" method="POST">
+                            @csrf
+                            <p class="letters">名前：{{$user->name}}</p>
+                            <p class="letters">Email：{{$user->email}}</p>
+                            <button class="cursor-pointer" type="submit" value="{{$user->id}}" name="follower_id">フォローする。</button>
+                        </form>
+                    </div>
+                @endif
+            @endforeach
+            
+            @foreach($fdusers as $fduser)
+                @if(Auth::user()->id != $fduser->id)
+                
+                <div class="create_follower">
+                    <form action="/follows" method="POST">
                         @csrf
-                        <div class="users">
-                            <input type="checkbox" value="{{$user->id}}" name="users_array[]">
-                                <p class="letters">名前：{{$user->name}}</p>
-                                <p class="letters">Email：{{$user->email}}</p>
-                            </input>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-            <input type="submit" value="フォローする。">
-        </form>
+                        @method("DELETE")
+                        <p class="letters">名前:{{$fduser->name}}</p>
+                        <p class="letters">Email:{{$fduser->email}}</p>
+                        <button class="cursor-pointer" type="submit" value="{{$fduser->id}}" name="follower_id">フォロー解除する。</button>
+                    </form>
+                </div>
+                @endif
+            @endforeach
+        </div>
         
         
         </x-app-layout>
