@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
 use Cloudinary;
+use App\Models\User;
 use Auth;
 
 class PostController extends Controller
 {
     //
-    public function index(Post $post)
+    public function index(Post $post,User $user)
     {
-        return view("posts/index")->with(["posts"=>$post->getPaginateByLimit()]);
+        return view("posts/index")->with(["posts"=>$post->getPaginateByLimit(),"users"=>$user->getPaginateByLimit()]);
     }
     public function show(Post $post)
     {

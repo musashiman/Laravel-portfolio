@@ -30,6 +30,7 @@ Route::controller(FollowController::class)->middleware(["auth"])->group(function
     Route::get("/follows","index")->name("follow_index");
     Route::get("/follows/create","create")->name("follow_create");
     Route::post("/follows","store")->name("follow_store");
+    Route::delete("/follows","delete")->name("follow_delete");
 });
 
 Route::get('/dashboard', function () {

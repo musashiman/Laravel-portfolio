@@ -21,6 +21,7 @@
                 <div class="title">Index</div>
                 <div class="title"><a href="/follows">Follow</a></div>
                 <div class="title"><a href="/posts/create">create</a></div>
+                <div class="title"><a href="/snaps/index">Snap</a></div>
             </div>
                 
                <div class="posts">
@@ -38,6 +39,14 @@
                        <button type="button" onclick="deletePost({{$post->id}})">削除</button>
                    </form>
                    @endif
+               @endforeach
+           </div>
+           
+           <div class="snap">
+               @foreach($posts as $post)
+                    @foreach($users as $user)
+                        <!--次はここから行う。リレーションは完了して次はフォローしているユーザーの投稿を観れるようにすることと、その当行に対してスナップ（ログインユーザーの投稿）を紐づけられるようにしていこう。-->
+                    @endforeach
                @endforeach
            </div>
            
