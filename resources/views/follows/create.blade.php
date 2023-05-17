@@ -51,6 +51,7 @@
             @endforeach
         </div>
         
+        <a href="/">ホームに戻る。</a>
         
         </x-app-layout>
     </body>
