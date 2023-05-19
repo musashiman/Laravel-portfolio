@@ -17,7 +17,8 @@ class PostController extends Controller
         $fuser = Auth::user();
         $followed = $fuser->following()->pluck('id');
         $fposts = Post::whereIn("user_id",$followed)->get();
-        // dd($fposts);
+        
+        // dd($followed);
         return view("posts/index")->with(["posts"=>$post->getPaginateByLimit(),"users"=>$user->getPaginateByLimit(),"fposts"=>$fposts]);
     }
     public function show(Post $post)
