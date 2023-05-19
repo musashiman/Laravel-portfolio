@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 
-
 class Post extends Model
 {
     use SoftDeletes;
@@ -31,7 +30,7 @@ class Post extends Model
     }
     
     // ページネーションと取得する制限をかける方法；
-    public function getPaginateByLimit(int $limit_count = 3)
+    public function getPaginateByLimit(int $limit_count = 6)
     {
         return $this->orderBy("updated_at","DESC")->paginate($limit_count);
     }
