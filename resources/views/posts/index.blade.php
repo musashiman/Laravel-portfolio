@@ -66,9 +66,7 @@
           </div>
         </section>
             
-           <div class="paginate">
-               {{ $posts->links("vendor.pagination.bootstrap-5")}}
-           </div>
+           
                        <!--次はここから行う。リレーションは完了して次はフォローしているユーザーの投稿を観れるようにすることと、その当行に対してスナップ（ログインユーザーの投稿）を紐づけられるようにしていこう。-->
         <section class="text-gray-600 body-font">
            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Following Users Posts</h1>
