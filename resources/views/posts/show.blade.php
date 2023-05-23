@@ -25,7 +25,9 @@
               <p class="mb-8 leading-relaxed">作成日時:{{$post->created_at}}</p>
               <p class="mb-8 leading-relaxed">Remember what you were doing and feeling on that day and at that time!This way you can continue to put in and grow without making the same mistakes!</p>
               <div class="flex justify-center">
+                @if(Auth::user()->id == $post->user_id)
                 <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="/posts/{{$post->id}}/edit">編集はこちらへ！</a></button>
+                @endif
                 <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><a href="/">メイン画面はこちらへ！</a></a></button>
               </div>
             </div>
